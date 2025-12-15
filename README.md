@@ -1,7 +1,7 @@
 🧠 Generative Python Coding Agent:
 A modular NL → Code → Run → Fix generative coding agent that converts natural language tasks into executable Python code, runs them safely, auto-fixes errors, and reports results through a Gradio UI.
 Designed with strict execution guardrails, deterministic generation, and a clean separation of concerns.
-.............................................................
+
 ✨ What this project does:
   1. Converts natural language tasks → runnable Python scripts
   2. Executes code in a sandboxed subprocess with timeouts
@@ -10,7 +10,7 @@ Designed with strict execution guardrails, deterministic generation, and a clean
   5. Collects stdout, stderr, and generated artifacts
   6. Provides a live Gradio UI
   7. Includes a built-in benchmark suite
-............................................................
+
 🧩 Project Structure:
 ├── app.py          # Entry point (loads model, launches UI)
 ├── config.py       # Global configuration & CPU safety
@@ -20,7 +20,7 @@ Designed with strict execution guardrails, deterministic generation, and a clean
 ├── tasks.py        # Core agent logic (NL → Code → Run → Fix)
 ├── benchmark.py    # Benchmark runner
 ├── ui.py           # Gradio UI
-...........................................................
+
 ⚙️ Requirements:
 Python 3.10+ (recommended: 3.10 or 3.11)
 Internet connection (first run downloads model weights)
@@ -33,9 +33,9 @@ Optional (used by generated code, not the app itself):
   1. numpy
   2. pandas
   3. matplotlib
-.............................................................
+
 Install dependencies: pip install torch transformers gradio
-.............................................................
+
 🖥️ Using the App:
 Run Task:
   Enter a natural language task
@@ -57,7 +57,7 @@ Run Task:
     2. Eventual success rate
     3. Failure rate
     4. Average runtime
-................................................................
+
 🔒 Safety & Guardrails:
   1. Timeout-bounded execution
   2. Restricted imports
@@ -65,7 +65,7 @@ Run Task:
   4. Plotting forbidden unless explicitly requested
   5. Pure Python preferred for algorithmic tasks
   6. No input() usage allowed
-................................................................
+
 🧠 Models
 Default model:
   Qwen/Qwen2.5-Coder-1.5B
