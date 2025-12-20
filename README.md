@@ -12,18 +12,14 @@ Designed with strict execution guardrails, deterministic generation, and a clean
 7. Includes a built-in benchmark suite
 
 🧩 Project Structure:
-app.py          # Entry point (loads model, launches UI)
-config.py       # Global configuration & CPU safety
-model.py        # Model loading (isolated, single-load)
-prompts.py      # Prompt templates (pure constants)
-execution.py    # Sandboxed code execution
-tasks.py        # Core agent logic (NL → Code → Run → Fix)
-benchmark.py    # Benchmark runner
-ui.py           # Gradio UI
+The project is modular by design: app.py is the entry point that loads the model once and launches the UI, while config.py centralizes safety limits and global settings. model.py handles isolated model loading, prompts.py stores fixed prompt templates, and execution.py runs generated code in a sandboxed environment. The core agent logic lives in tasks.py, which converts natural language into code, executes it, and fixes errors iteratively, while benchmark.py evaluates performance on coding benchmarks. Finally, ui.py exposes everything through a clean Gradio interface.
 
 ⚙️ Requirements:
 Python 3.10+ (recommended: 3.10 or 3.11)
 Internet connection (first run downloads model weights)
+
+How to run: 
+Open app.py in any IDE or Terminal and run the file (after creating a virtual invironment and installing all the packages listed in requirments.txt).
 
 Python packages: Core dependencies:
 1. torch
