@@ -1,84 +1,27 @@
-🧠 Generative Python Coding Agent:
+🧠 Generative Python Coding Agent
 
-A modular NL → Code → Run → Fix generative coding agent that converts natural language tasks into executable Python code, runs them safely, auto-fixes errors, and reports results through a Gradio UI.
-Designed with strict execution guardrails, deterministic generation, and a clean separation of concerns.
+A natural-language → code → run → fix Python agent that safely generates, executes, and auto-corrects code using a local LLM. It’s modular, deterministic, and designed with strict execution guardrails, exposed through a lightweight Gradio UI.
 
-✨ What this project does:
-1. Converts natural language tasks → runnable Python scripts
-2. Executes code in a sandboxed subprocess with timeouts
-3. Automatically fixes syntax errors using model feedback
-4. Enforces plotting guardrails (no plots unless explicitly requested)
-5. Collects stdout, stderr, and generated artifacts
-6. Provides a live Gradio UI
-7. Includes a built-in benchmark suite
+✨ What it does
 
-🧩 Project Structure:
+Takes plain-English tasks, turns them into runnable Python, executes them in a sandbox with timeouts, fixes errors iteratively using model feedback, captures stdout/stderr/files, enforces no-plot rules unless requested, and includes a built-in benchmark runner.
 
-The project is modular by design: app.py is the entry point that loads the model once and launches the UI, while config.py centralizes safety limits and global settings. model.py handles isolated model loading, prompts.py stores fixed prompt templates, and execution.py runs generated code in a sandboxed environment. The core agent logic lives in tasks.py, which converts natural language into code, executes it, and fixes errors iteratively, while benchmark.py evaluates performance on coding benchmarks. Finally, ui.py exposes everything through a clean Gradio interface.
+🧩 Architecture
 
-⚙️ Requirements:
+app.py boots the model and UI, tasks.py handles NL→code→execute→fix loops, execution.py sandboxes code, prompts.py stores fixed prompts, config.py defines safety limits, benchmark.py runs evaluations, and ui.py exposes everything via Gradio.
 
-Python 3.10+ (recommended: 3.10 or 3.11)
-Internet connection (first run downloads model weights)
+⚙️ Requirements & Run
 
-How to run: 
+Requires Python 3.10+ and internet on first run to download model weights. Create a virtual env, install torch, transformers, and gradio, then run python app.py.
 
-Open app.py in any IDE or Terminal and run the file (after creating a virtual invironment and installing all the packages listed in requirments.txt).
+🖥️ Usage
 
-Python packages: Core dependencies:
+Use Run Task to execute natural-language instructions and inspect generated code, logs, and outputs, or Run Benchmark to evaluate success rate, failures, and runtime across predefined tasks.
 
-1. torch
-2. transformers
-3. gradio
+🔒 Safety
 
-Optional (used by generated code, not the app itself):
+Execution is timeout-bounded, imports are restricted, package installs are blocked, input() is disallowed, and plotting is forbidden unless explicitly requested to keep runs deterministic and safe.
 
-1. numpy
-2. pandas
-3. matplotlib
+🧠 Models
 
-Install dependencies: 
-
-pip install torch transformers gradio
-
-🖥️ Using the App:
-
-Run Task:
-Enter a natural language task
-Click Run Task
-View:
-1. Status
-2. Generated code
-3. STDOUT / STDERR
-4. Images (if any)
-    
-OR
-  
-Click Run Benchmark
-1. Click Run Benchmark
-2. Executes a predefined suite of tasks
-
-Displays:
-
-1. Total tasks
-2. Eventual success rate
-3. Failure rate
-4. Average runtime
-
-🔒 Safety & Guardrails:
-
-1. Timeout-bounded execution
-2. Restricted imports
-3. No runtime package installation
-4. Plotting forbidden unless explicitly requested
-5. Pure Python preferred for algorithmic tasks
-6. No input() usage allowed
-
-🧠 Models:
-
-Default model:
-Qwen/Qwen2.5-Coder-1.5B
-
-Fallback:
-
-deepseek-ai/deepseek-coder-1.3b-base
+Default model is Qwen/Qwen2.5-Coder-1.5B, with DeepSeek-Coder-1.3B as a fallback.
